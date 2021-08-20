@@ -1,11 +1,12 @@
 import { useEffect } from 'react'
-import { Link, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'src/app/hooks'
-import { fetchList, selectCharacters } from './reducer'
+import Pagination from 'src/components/pagination'
 
 import './index.css'
-import Pagination from 'src/components/pagination'
+import { fetchList, selectCharacters } from './reducer'
+import DataList from './components/dataList'
 
 const CharacterList = () => {
   const dispatch = useAppDispatch()
@@ -22,13 +23,8 @@ const CharacterList = () => {
     <div className="CharacterList">
       {characters ? (
         <>
-          {characters.results.map(character => (
-            <p>
-              <Link to={`/character/${character.id}`}>#{character.id}</Link>
-              &nbsp;- {character.name} - {character.species}
-            </p>
-          ))}
-          <Pagination pageCount={characters?.info.pages} currentPage={page} baseUrl="/" />
+          <DataList characters={characters.results} />
+          <Pagination pageCount={characters.info.pages} currentPage={page} baseUrl="/" />
         </>
       ) : null}
     </div>

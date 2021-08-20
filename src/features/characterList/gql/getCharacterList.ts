@@ -10,7 +10,13 @@ export default gql`
       results {
         id
         name
+        image
+        status
         species
+        gender
+        location {
+          name
+        }
       }
     }
   }
