@@ -1,10 +1,12 @@
 import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit'
 
 import characterListReducer from 'src/features/characterList/reducer'
+import characterReducer from 'src/features/character/reducer'
 
 export const store = configureStore({
 	reducer: {
 		characterList: characterListReducer,
+		character: characterReducer,
 	},
 })
 

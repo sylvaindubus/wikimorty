@@ -1,3 +1,5 @@
+import Episode from './episode'
+
 type Character = {
 	id: string
 	name: string
@@ -8,6 +10,10 @@ type Character = {
 	location: {
 		name: string
 	}
+	origin: {
+		name: string
+	}
+	episode: Episode[]
 }
 
 export default Character

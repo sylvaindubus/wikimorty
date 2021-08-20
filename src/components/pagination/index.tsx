@@ -55,8 +55,8 @@ const Pagination = ({ pageCount, currentPage, baseUrl }: PaginationProps) => {
 
   return (
     <PageList>
-      {pages.map(page => (
-        <Page to={baseUrl + page} isCurrent={page === currentPage}>
+      {pages.map((page, index) => (
+        <Page to={baseUrl + page} isCurrent={page === currentPage} key={index}>
           {page}
         </Page>
       ))}
