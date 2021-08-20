@@ -62,7 +62,7 @@ const Layout = ({ children }: LayoutProps) => (
     <Container>
       <Header>
         <Link to="/">
-          <Title>Wikimorty React App</Title>
+          <Title>WikiMorty React App</Title>
         </Link>
       </Header>
       <Main>{children}</Main>
