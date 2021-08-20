@@ -1,8 +1,19 @@
 # WikiMorty
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## 🏠 Presentation
 
-## Available Scripts
+This simple React SPA just displays Rick & Morty's characters, thanks to this cool [API](https://rickandmortyapi.com/documentation/). 👍
+
+## 🤖 Technologies
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It includes serveral technologies:
+
+- TypeScript
+- GraphQL
+- Redux / React Router
+- Styled Components
+
+## ⚙️ Available Scripts
 
 In the project directory, you can run:
 
