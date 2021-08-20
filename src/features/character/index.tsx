@@ -13,11 +13,12 @@ const Wrapper = styled(Card)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0 32px;
+  padding: 0 16px;
   margin: 100px 12px 12px;
 
   @media (min-width: 768px) {
     min-width: 640px;
+    padding: 0 32px;
   }
 `
 

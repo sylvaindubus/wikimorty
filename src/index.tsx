@@ -15,7 +15,7 @@ ReactDOM.render(
       <Router>
         <Layout>
           <Switch>
-            <Route exact path="/:page?">
+            <Route exact path="/">
               <CharacterList />
             </Route>
             <Route path="/character/:id">

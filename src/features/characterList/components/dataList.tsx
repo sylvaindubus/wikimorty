@@ -47,8 +47,22 @@ const SimpleCard = styled.li`
   }
 `
 
+const Error = styled.p`
+  margin: 2em;
+`
+
 const DataList = ({ characters }: DataListProps) => {
   const device = useContext(DeviceContext)
+
+  if (!characters.length) {
+    return (
+      <Error>
+        😔
+        <br />
+        No results
+      </Error>
+    )
+  }
 
   if (device === 'small') {
     return (

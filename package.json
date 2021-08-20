@@ -44,8 +44,10 @@
   "devDependencies": {
     "@apollo/client": "^3.4.8",
     "@reduxjs/toolkit": "^1.6.1",
+    "@types/lodash": "^4.14.172",
     "@types/react-router-dom": "^5.1.8",
     "@types/styled-components": "^5.1.12",
+    "lodash": "^4.17.21",
     "react-redux": "^7.2.4",
     "styled-components": "^5.3.0"
   }

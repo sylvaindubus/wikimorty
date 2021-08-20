@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit'
 
 import { RootState } from 'src/app/store'
 import { query } from 'src/app/api'
@@ -17,27 +17,42 @@ type List = {
 interface CharacterListState {
   status: 'init' | 'idle' | 'loading' | 'failed'
   list: List | null
+  page: number
+  nameFilter: string
 }
 
 const initialState: CharacterListState = {
   status: 'idle',
-  list: null
+  list: null,
+  page: 1,
+  nameFilter: ''
 }
+
+type QueryOption = { page: number, nameFilter: string }
 
 export const fetchList = createAsyncThunk(
   'characterList/fetchList',
-  async (page: number) => {
+  async (options: QueryOption) => {
     return await query({
       query: GET_CHARACTER_LIST,
-      variables: { page }
+      variables: options
     })
   }
 )
 
-export const CharacterListSlice = createSlice({
+export const characterListSlice = createSlice({
   name: 'CharacterList',
   initialState,
-  reducers: {},
+  reducers: {
+    changePage: (state, action: PayloadAction<number>) => {
+      state.page = action.payload
+    },
+    changeNameFilter: (state, action: PayloadAction<string>) => {
+      state.nameFilter = action.payload
+      state.page = 1
+    },
+
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchList.pending, (state) => {
@@ -54,8 +69,11 @@ export const CharacterListSlice = createSlice({
   },
 })
 
-export const selectStatus = (state: RootState) => state.characterList.status
+export const { changePage, changeNameFilter } = characterListSlice.actions;
 
+export const selectStatus = (state: RootState) => state.characterList.status
+export const selectPage = (state: RootState) => state.characterList.page
+export const selectNameFilter = (state: RootState) => state.characterList.nameFilter
 export const selectCharacters = (state: RootState) => state.characterList.list
 
-export default CharacterListSlice.reducer
+export default characterListSlice.reducer

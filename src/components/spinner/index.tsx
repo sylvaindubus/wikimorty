@@ -30,7 +30,7 @@ const Wrapper = styled.svg`
 `
 
 const Circle = styled.circle`
-  stroke: rgba(255, 255, 255, 0.4);
+  stroke: #0abde3;
   stroke-linecap: round;
   stroke-width: 3px;
   animation: ${dash} 1.5s ease-in-out infinite;
