@@ -1,15 +1,17 @@
 import { useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, useHistory } from 'react-router-dom'
 import styled from 'styled-components'
 
 import { useAppSelector, useAppDispatch } from 'src/app/hooks'
 import Spinner from 'src/components/spinner'
 import ErrorMessage from 'src/components/errorMessage'
 import Card from 'src/components/card'
+import LeftArrow from 'src/components/leftArrow'
 
 import { fetch, selectStatus, selectCharacter } from './reducer'
 
 const Wrapper = styled(Card)`
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -57,12 +59,19 @@ const EpisodeList = styled.ul`
   margin: 0 16px;
 `
 
+const BackButton = styled.button`
+  position: absolute;
+  width: 32px;
+  left: 32px;
+  top: 32px;
+`
+
 const Character = () => {
   const dispatch = useAppDispatch()
-
   const { id } = useParams<{ id: string | undefined }>()
   const status = useAppSelector(selectStatus)
   const character = useAppSelector(selectCharacter)
+  const history = useHistory()
 
   useEffect(() => {
     dispatch(fetch(parseInt(id || '')))
@@ -76,6 +85,9 @@ const Character = () => {
 
   return (
     <Wrapper as="article">
+      <BackButton onClick={history.goBack}>
+        <LeftArrow />
+      </BackButton>
       <Avatar src={character?.image} alt={character.name} />
       <Header>
         <Name>{character.name}</Name>
