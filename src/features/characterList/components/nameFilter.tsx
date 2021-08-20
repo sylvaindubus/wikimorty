@@ -32,8 +32,8 @@ const NameFilter = ({ onChange, defaultValue = '' }: NameFilterProps) => {
 
   return (
     <Wrapper>
-      <label>Name:</label>&nbsp;
-      <input type="text" value={name} onChange={handleChange} />
+      <label htmlFor="nameFilter">Name:</label>&nbsp;
+      <input id="nameFilter" type="text" value={name} onChange={handleChange} />
     </Wrapper>
   )
 }

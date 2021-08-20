@@ -71,7 +71,7 @@ const DataList = ({ characters }: DataListProps) => {
         {characters.map((character, index) => (
           <SimpleCard key={index}>
             <div>
-              <Avatar $isBig src={character.image} />
+              <Avatar $isBig src={character.image} alt={character.name} />
             </div>
             <div>
               <Link to={`/character/${character.id}`}>{character.name}</Link>

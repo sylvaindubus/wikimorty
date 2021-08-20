@@ -69,7 +69,7 @@ export const characterListSlice = createSlice({
   },
 })
 
-export const { changePage, changeNameFilter } = characterListSlice.actions;
+export const { changePage, changeNameFilter } = characterListSlice.actions
 
 export const selectStatus = (state: RootState) => state.characterList.status
 export const selectPage = (state: RootState) => state.characterList.page

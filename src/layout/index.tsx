@@ -22,6 +22,7 @@ const Container = styled.div`
 
   a {
     color: #0abde3;
+    font-weight: 600;
   }
 `
 
