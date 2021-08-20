@@ -22,9 +22,7 @@ const Wrapper = styled(Card)`
   width: calc(100% - 24px);
 
   @media (min-width: 768px) {
-    width: auto;
-    min-width: 640px;
-    max-width: calc(100% - 24px);
+    max-width: 1280px;
     padding: 32px 32px 0;
   }
 `
@@ -64,6 +62,8 @@ const CharacterList = () => {
     dispatch(changeNameFilter(name))
   }
 
+  if (status === 'init') return <Spinner />
+
   return (
     <Wrapper>
       <Header>
@@ -72,11 +72,7 @@ const CharacterList = () => {
         </Counter>
         <NameFilter defaultValue={nameFilter} onChange={handleNameFilterChange} />
       </Header>
-      {status === 'init' || status === 'loading' ? (
-        <Spinner />
-      ) : (
-        <DataList characters={characters?.results ?? []} />
-      )}
+      <DataList characters={characters?.results ?? []} />
       <Pagination
         onChange={handlePageChange}
         pageCount={characters?.info?.pages || 0}

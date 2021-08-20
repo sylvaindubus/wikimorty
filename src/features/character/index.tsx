@@ -14,7 +14,7 @@ const Wrapper = styled(Card)`
   flex-direction: column;
   align-items: center;
   padding: 0 16px;
-  margin: 100px 12px 12px;
+  margin: 64px 12px 12px;
 
   @media (min-width: 768px) {
     min-width: 640px;
@@ -50,7 +50,7 @@ const Info = styled.li`
 
 const InfoLabel = styled.p`
   margin-bottom: 0.25em;
-  font-weight: 700;
+  font-weight: 600;
 `
 
 const EpisodeList = styled.ul`
@@ -68,8 +68,7 @@ const Character = () => {
     dispatch(fetch(parseInt(id || '')))
   }, [id, dispatch])
 
-  if (status === 'init') return null
-  if (status === 'loading') return <Spinner />
+  if (status === 'init' || status === 'loading') return <Spinner />
 
   if (!character) {
     return <ErrorMessage>I didn't find this character. 😞</ErrorMessage>
@@ -104,7 +103,7 @@ const Character = () => {
           </Info>
         ) : null}
         <Info>
-          <InfoLabel>Episodes ({character.episode.length}):</InfoLabel>
+          <InfoLabel>Episodes ({character.episode.length})</InfoLabel>
           <EpisodeList>
             {character.episode.map(({ name, episode }) => (
               <li key={episode}>

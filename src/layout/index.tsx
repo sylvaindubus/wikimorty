@@ -9,6 +9,7 @@ type LayoutProps = {
 }
 
 const Container = styled.div`
+  font-family: Jost, sans-serif;
   text-align: center;
   min-height: 100vh;
   text-align: center;
@@ -25,7 +26,9 @@ const Container = styled.div`
 `
 
 const Title = styled.h1`
-  font-size: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 800;
+  text-transform: uppercase;
 `
 
 const Header = styled.header`
@@ -39,7 +42,7 @@ const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   width: 100%;
 `
 

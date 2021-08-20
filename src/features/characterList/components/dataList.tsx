@@ -10,6 +10,7 @@ type DataListProps = {
 }
 
 const Table = styled.table`
+  width: 100%;
   border-collapse: collapse;
 
   th {
