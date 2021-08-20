@@ -14,12 +14,15 @@ const Wrapper = styled(Card)`
   flex-direction: column;
   align-items: center;
   padding: 0 32px;
-  min-width: 640px;
-  margin: 100px 0;
+  margin: 100px 12px 12px;
+
+  @media (min-width: 768px) {
+    min-width: 640px;
+  }
 `
 
 const Header = styled.header`
-  margin-bottom: 30px;
+  margin-bottom: 32px;
 `
 
 const Avatar = styled.img`
@@ -50,7 +53,7 @@ const InfoLabel = styled.p`
 `
 
 const EpisodeList = styled.ul`
-  margin: 0 64px;
+  margin: 0 16px;
 `
 
 const Character = () => {
@@ -103,7 +106,7 @@ const Character = () => {
           <InfoLabel>Episodes ({character.episode.length}):</InfoLabel>
           <EpisodeList>
             {character.episode.map(({ name, episode }) => (
-              <li>
+              <li key={episode}>
                 {episode} - {name}
               </li>
             ))}

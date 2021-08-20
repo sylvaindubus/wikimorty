@@ -2,6 +2,8 @@ import { ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import styled from 'styled-components'
 
+import { DeviceProvider } from 'src/contexts/device'
+
 type LayoutProps = {
   children: ReactNode
 }
@@ -29,7 +31,7 @@ const Title = styled.h1`
 const Header = styled.header`
   display: flex;
   justify-content: center;
-  padding: 30px;
+  padding: 32px;
 `
 
 const Main = styled.main`
@@ -45,7 +47,7 @@ const Footer = styled.footer`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 1em 0;
+  padding: 32px;
 
   p {
     margin: 0.25em 0;
@@ -53,20 +55,22 @@ const Footer = styled.footer`
 `
 
 const Layout = ({ children }: LayoutProps) => (
-  <Container>
-    <Header>
-      <Link to="/">
-        <Title>Wikimorty React App</Title>
-      </Link>
-    </Header>
-    <Main>{children}</Main>
-    <Footer>
-      <p>Just a simple React app!</p>
-      <p>
-        <a href="https://github.com/sylvaindubus/wikimorty">Code source </a>
-      </p>
-    </Footer>
-  </Container>
+  <DeviceProvider>
+    <Container>
+      <Header>
+        <Link to="/">
+          <Title>Wikimorty React App</Title>
+        </Link>
+      </Header>
+      <Main>{children}</Main>
+      <Footer>
+        <p>Just a simple React app!</p>
+        <p>
+          <a href="https://github.com/sylvaindubus/wikimorty">Code source </a>
+        </p>
+      </Footer>
+    </Container>
+  </DeviceProvider>
 )
 
 export default Layout

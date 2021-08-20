@@ -15,7 +15,7 @@ type List = {
 }
 
 interface CharacterListState {
-  status: 'idle' | 'loading' | 'failed'
+  status: 'init' | 'idle' | 'loading' | 'failed'
   list: List | null
 }
 
@@ -45,11 +45,16 @@ export const CharacterListSlice = createSlice({
       })
       .addCase(fetchList.fulfilled, (state, action) => {
         state.status = 'idle'
-        console.log('IN', action.payload.data.characters)
         state.list = action.payload.data.characters
+      })
+      .addCase(fetchList.rejected, (state) => {
+        state.status = 'failed'
+        state.list = null
       })
   },
 })
+
+export const selectStatus = (state: RootState) => state.characterList.status
 
 export const selectCharacters = (state: RootState) => state.characterList.list
 

@@ -23,22 +23,22 @@ const dash = keyframes`
 `
 
 const Wrapper = styled.svg`
+  width: 96px;
+  height: 96px;
+  margin: 32px;
   animation: ${rotate} 2s linear infinite;
-  margin: 1em;
-  width: 3em;
-  height: 3em;
 `
 
 const Circle = styled.circle`
-  stroke: rgba(255, 255, 255, 0.2);
+  stroke: rgba(255, 255, 255, 0.4);
   stroke-linecap: round;
-  stroke-width: 5px;
+  stroke-width: 3px;
   animation: ${dash} 1.5s ease-in-out infinite;
 `
 
 const Spinner = () => (
   <Wrapper viewBox="0 0 50 50">
-    <Circle cx="25" cy="25" r="20" fill="none" stroke-width="5"></Circle>
+    <Circle cx="25" cy="25" r="20" fill="none"></Circle>
   </Wrapper>
 )
 
