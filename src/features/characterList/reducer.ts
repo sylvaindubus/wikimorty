@@ -9,6 +9,7 @@ import GET_CHARACTER_LIST from './gql/getCharacterList'
 type List = {
   info: {
     count: number
+    pages: number
   },
   results: Character[]
 }

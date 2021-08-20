@@ -5,6 +5,7 @@ import { useAppSelector, useAppDispatch } from 'src/app/hooks'
 import { fetchList, selectCharacters } from './reducer'
 
 import './index.css'
+import Pagination from 'src/components/pagination'
 
 const CharacterList = () => {
   const dispatch = useAppDispatch()
@@ -19,17 +20,17 @@ const CharacterList = () => {
 
   return (
     <div className="CharacterList">
-      {characters !== null
-        ? characters.results.map(character => (
+      {characters ? (
+        <>
+          {characters.results.map(character => (
             <p>
               <Link to={`/character/${character.id}`}>#{character.id}</Link>
               &nbsp;- {character.name} - {character.species}
             </p>
-          ))
-        : null}
-      <Link to="/1">1</Link>
-      <Link to="/2">2</Link>
-      <Link to="/3">3</Link>
+          ))}
+          <Pagination pageCount={characters?.info.pages} currentPage={page} baseUrl="/" />
+        </>
+      ) : null}
     </div>
   )
 }

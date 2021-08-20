@@ -5,6 +5,7 @@ export default gql`
     characters(page: $page) {
       info {
         count
+        pages
       }
       results {
         id
