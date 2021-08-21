@@ -14,28 +14,31 @@ type List = {
   results: Character[]
 }
 
-interface CharacterListState {
+type QueryOption = { page?: number, nameFilter?: string }
+
+export interface CharacterListState {
   status: 'init' | 'idle' | 'loading' | 'failed'
   list: List | null
   page: number
   nameFilter: string
 }
 
-const initialState: CharacterListState = {
+export const initialState: CharacterListState = {
   status: 'idle',
   list: null,
   page: 1,
   nameFilter: ''
 }
 
-type QueryOption = { page: number, nameFilter: string }
-
 export const fetchList = createAsyncThunk(
   'characterList/fetchList',
-  async (options: QueryOption) => {
+  async (options: QueryOption = {}) => {
     return await query({
       query: GET_CHARACTER_LIST,
-      variables: options
+      variables: {
+        page: options.page ?? 1,
+        nameFilter: options.nameFilter ?? ''
+      }
     })
   }
 )
