@@ -2,11 +2,12 @@ import { useContext } from 'react'
 import styled from 'styled-components'
 
 import { DeviceContext } from 'src/contexts/device'
+import { Link } from 'react-router-dom'
 
 type PaginationProps = {
   pageCount: number
   currentPage: number
-  onChange: Function
+  basePath: string
 }
 
 const calculatePages = (pageCount: number, currentPage: number, qtyDisplayed: number) => {
@@ -38,24 +39,26 @@ const PageList = styled.ol`
   padding: 1em 0;
 `
 
-const Page = styled.li<{ $isCurrent?: boolean }>`
+const Page = styled.li`
   margin: 0.5em;
   width: 1.5em;
-  color: inherit;
-  font-weight: ${props => (props.$isCurrent ? 700 : 400)};
-  text-decoration: none;
   text-align: center;
 `
+const StyledLink = styled(Link)<{ $isCurrent?: boolean }>`
+  font-weight: ${props => (props.$isCurrent ? 600 : 400)};
+`
 
-const Pagination = ({ pageCount, currentPage, onChange }: PaginationProps) => {
+const Pagination = ({ pageCount, currentPage, basePath }: PaginationProps) => {
   const device = useContext(DeviceContext)
   const pages = calculatePages(pageCount, currentPage, device !== 'small' ? 9 : 7)
 
   return (
     <PageList>
       {pages.map((page, index) => (
-        <Page onClick={() => onChange(page)} $isCurrent={page === currentPage} key={index}>
-          {page}
+        <Page key={index}>
+          <StyledLink to={basePath + page} $isCurrent={page === currentPage}>
+            {page}
+          </StyledLink>
         </Page>
       ))}
     </PageList>

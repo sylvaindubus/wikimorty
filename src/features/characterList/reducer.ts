@@ -26,7 +26,7 @@ export interface CharacterListState {
 export const initialState: CharacterListState = {
   status: 'idle',
   list: null,
-  page: 1,
+  page: 0,
   nameFilter: ''
 }
 

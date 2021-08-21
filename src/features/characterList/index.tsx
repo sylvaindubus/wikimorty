@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import styled from 'styled-components'
+import { useParams } from 'react-router-dom'
 
 import { useAppSelector, useAppDispatch } from 'src/app/hooks'
 import Spinner from 'src/components/spinner'
@@ -45,18 +46,21 @@ const Counter = styled.div`
 const CharacterList = () => {
   const dispatch = useAppDispatch()
 
+  const params = useParams<{ page: string | undefined }>()
   const status = useAppSelector(selectStatus)
   const characters = useAppSelector(selectCharacters)
   const page = useAppSelector(selectPage)
   const nameFilter = useAppSelector(selectNameFilter)
 
   useEffect(() => {
+    // @TODO: improve this line
+    if (!page) return // prevent initial fetching (before we can get the page from the URL)
     dispatch(fetchList({ page, nameFilter }))
   }, [page, nameFilter, dispatch])
 
-  const handlePageChange = (page: number) => {
-    dispatch(changePage(page))
-  }
+  useEffect(() => {
+    dispatch(changePage(parseInt(params.page ?? '1')))
+  }, [params.page, dispatch])
 
   const handleNameFilterChange = (name: string) => {
     dispatch(changeNameFilter(name))
@@ -73,11 +77,7 @@ const CharacterList = () => {
         <NameFilter defaultValue={nameFilter} onChange={handleNameFilterChange} />
       </Header>
       <DataList characters={characters?.results ?? []} />
-      <Pagination
-        onChange={handlePageChange}
-        pageCount={characters?.info?.pages || 0}
-        currentPage={page}
-      />
+      <Pagination pageCount={characters?.info?.pages || 0} currentPage={page} basePath="/" />
     </Wrapper>
   )
 }

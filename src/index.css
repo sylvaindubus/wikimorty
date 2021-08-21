@@ -29,6 +29,8 @@ a {
   background-color: transparent;
   text-decoration: none;
   cursor: pointer;
+  color: #0abde3;
+  font-weight: 600;
 }
 
 h1 {

@@ -19,11 +19,6 @@ const Container = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: #c8d6e5;
-
-  a {
-    color: #0abde3;
-    font-weight: 600;
-  }
 `
 
 const Title = styled.h1`
