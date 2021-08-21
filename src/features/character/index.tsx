@@ -85,7 +85,7 @@ const Character = () => {
   }
 
   return (
-    <Wrapper as="article">
+    <Wrapper as="article" data-test-id="character">
       <BackButton onClick={history.goBack}>
         <LeftArrow />
       </BackButton>
@@ -119,7 +119,7 @@ const Character = () => {
           <InfoLabel>Episodes ({character.episode.length})</InfoLabel>
           <EpisodeList>
             {character.episode.map(({ name, episode }) => (
-              <li key={episode}>
+              <li key={episode} data-test-id="episodeLine">
                 {episode} - {name}
               </li>
             ))}

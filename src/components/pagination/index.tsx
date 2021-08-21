@@ -53,7 +53,7 @@ const Pagination = ({ pageCount, currentPage, basePath }: PaginationProps) => {
   const pages = calculatePages(pageCount, currentPage, device !== 'small' ? 9 : 7)
 
   return (
-    <PageList>
+    <PageList data-test-id="pagination">
       {pages.map((page, index) => (
         <Page key={index}>
           <StyledLink to={basePath + page} $isCurrent={page === currentPage}>

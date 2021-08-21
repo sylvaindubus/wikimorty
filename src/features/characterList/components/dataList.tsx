@@ -98,7 +98,7 @@ const DataList = ({ characters }: DataListProps) => {
       </thead>
       <tbody>
         {characters.map(character => (
-          <tr key={character.id}>
+          <tr key={character.id} data-test-id="dataListLine">
             <NameCell>
               <Avatar src={character.image} />
               <Link to={`/character/${character.id}`}>{character.name}</Link>

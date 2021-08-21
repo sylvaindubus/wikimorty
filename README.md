@@ -12,6 +12,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 - GraphQL
 - Redux / React Router
 - Styled Components
+- Jest / Playwright
 
 ## ⚙️ Available Scripts
 
@@ -27,8 +28,15 @@ You will also see any lint errors in the console.
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches both fonctional tests (ending with `.spec.ts`) and acceptance tests (ending with `.test.ts`)
+
+### `npm functional-test`
+
+Launches only fonctional tests (ending with `.spec.ts`)
+
+### `npm acceptance-test`
+
+Launches only acceptance tests (ending with `.test.ts`)
 
 ### `npm run build`
 

@@ -69,7 +69,7 @@ const CharacterList = () => {
   if (status === 'init') return <Spinner />
 
   return (
-    <Wrapper>
+    <Wrapper data-test-id="characterList">
       <Header>
         <Counter>
           {characters?.info.count || 0} character{characters?.info.count !== 1 ? 's' : ''}

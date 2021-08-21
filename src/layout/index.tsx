@@ -58,7 +58,7 @@ const Layout = ({ children }: LayoutProps) => (
     <Container>
       <Header>
         <Link to="/">
-          <Title>WikiMorty React App</Title>
+          <Title data-test-id="title">WikiMorty React App</Title>
         </Link>
       </Header>
       <Main>{children}</Main>
